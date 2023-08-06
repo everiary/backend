@@ -1,10 +1,13 @@
 {
-  "name": "eve",
+  "name": "everiary",
   "version": "0.0.2",
   "description": "",
-  "author": "",
-  "private": true,
-  "license": "UNLICENSED",
+  "author": "wemsx",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wemsx/everiary.git"
+  },
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
