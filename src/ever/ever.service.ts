@@ -4,9 +4,6 @@ import { Ever, EverDocument } from './ever.schema';
 import { CreateEverDto } from 'src/dto/ever.dto';
 import { Injectable } from '@nestjs/common';
 
-interface DeleteOneResult {
-  [propName: string]:number|boolean
-}
 @Injectable()
 export class EverService {
   // 注册Schema后，可以使用 @InjectModel() 装饰器将 User 模型注入到 UserService 中:
@@ -23,12 +20,17 @@ export class EverService {
     const temp = await this.userTest.find().exec();
     return temp;
   }
-  // 查找
-  async findOne(title: string): Promise<Ever[]> {
+  async findOneById(sid: string): Promise<Ever[]> {
     // 这里是异步的
-    const temp = await this.userTest.find({ title });
+    const temp = await this.userTest.find({ _id: sid });
     return temp;
   }
+  // 查找
+  /*async findOne(title: string): Promise<Ever[]> {
+    // 这里是异步的
+    const temp = await this.userTest.find({ title: title });
+    return temp;
+  }*/
   // 删除
   async deleteOne(sid: number): Promise<object> {
     // 这里是异步的  remove 方法删除成功并返回相应的个数

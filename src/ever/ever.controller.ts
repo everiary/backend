@@ -25,6 +25,14 @@ export class EverController {
   async findAll() {
     return this.everService.findAll();
   }
+  
+  @Get(':sid')
+  @ApiOperation({
+    summary: '使用id获取单个everiary',
+  })
+  async findOneById(@Param() param: any) {
+    return this.everService.findOneById(param.sid);
+  }
 
   @Post('')
   @ApiOperation({
@@ -34,13 +42,14 @@ export class EverController {
     return this.everService.create(body);
   }
 
-  @Get('find')
+  /*@Get('find')
   @ApiOperation({
-    summary: '使用_id获取单个everiary',
+    summary: '使用title获取单个everiary',
   })
   async findOne(@Query() query: any) {
+    console.log(query)
     return this.everService.findOne(query.title);
-  }
+  }*/
 
   @Delete(':sid')
   @ApiOperation({
