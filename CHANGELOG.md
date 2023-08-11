@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/wemsx/everiary/compare/v0.0.3...v0.0.4) (2023-08-11)
+
+
+### ✨ Features | 新功能
+
+* 新增了create_at与update_at字段，但是存在Bug，并且因为修改了ever.dto导致无法使用getRandom方法 ([0331f95](https://github.com/wemsx/everiary/commit/0331f95ca5e004b9b1c05c6ffdb58f2f6a33ef40))
+* 新增随机获取everiary接口 ([280fa11](https://github.com/wemsx/everiary/commit/280fa11f3bc16c5c7d4a5635718926309dfc6543))
+
 ### [0.0.3](https://github.com/wemsx/everiary/compare/v0.0.2...v0.0.3) (2023-08-10)
 
 
