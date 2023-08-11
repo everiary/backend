@@ -43,4 +43,10 @@ export class EverService {
     const temp = await this.userTest.updateOne({ _id: sid }, { $set: data });
     return temp;
   }
+  //随机获取一条
+  async getRandom(): Promise<Ever[]> {
+    // 这里是异步的  remove 方法删除成功并返回相应的个数
+    const temp = await this.userTest.aggregate([ { $sample: { size: 1 } } ]).exec();
+    return temp;
+  }
 }

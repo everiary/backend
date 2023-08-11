@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Put,
   Param,
   Post,
   Patch,
@@ -65,5 +66,13 @@ export class EverController {
   })
   updateUser(@Body() body: any, @Param() param: any) {
     return this.everService.updateUser(param.sid, body);
+  }
+
+  @Put('')
+  @ApiOperation({
+    summary: '获取一条随机的everiary',
+  })
+  getRandom() {
+    return this.everService.getRandom();
   }
 }
