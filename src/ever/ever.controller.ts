@@ -39,7 +39,7 @@ export class EverController {
   @ApiOperation({
     summary: '创建一条everiary',
   })
-  async createUser(@Body() body: CreateEverDto) {
+  async createEver(@Body() body: CreateEverDto) {
     return this.everService.create(body);
   }
 
@@ -64,8 +64,8 @@ export class EverController {
   @ApiOperation({
     summary: '使用_id更改单个everiary',
   })
-  updateUser(@Body() body: any, @Param() param: any) {
-    return this.everService.updateUser(param.sid, body);
+  updateEver(@Body() body: any, @Param() param: any) {
+    return this.everService.updateEver(param.sid, body);
   }
 
   @Put('')
