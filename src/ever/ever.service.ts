@@ -9,9 +9,11 @@ export class EverService {
   // 注册Schema后，可以使用 @InjectModel() 装饰器将 User 模型注入到 UserService 中:
   constructor(@InjectModel('Ever') private userTest: Model<EverDocument>) {}
   // 添加
-  async create(createUserDto: CreateEverDto): Promise<Ever> {
-    const createUser = new this.userTest(createUserDto);
-    const temp = await createUser.save();
+  async create(createEverDto: CreateEverDto): Promise<Ever> {
+    let currentTime = new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000)
+    const createEverDocument = Object.assign(createEverDto, {"created": currentTime,"updated": currentTime})
+    const createEver = new this.userTest(createEverDocument);
+    const temp = await createEver.save();
     return temp;
   }
   // 查找
@@ -33,8 +35,8 @@ export class EverService {
   }
   // 修改
   async updateEver(sid: string, data: any) {
-    // 这里是异步的  remove 方法删除成功并返回相应的个数
-    const temp = await this.userTest.updateOne({ _id: sid }, { $set: data });
+    const updateEverDocument = Object.assign(data, {"updated": new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000)})
+    const temp = await this.userTest.updateOne({ _id: sid }, { $set: updateEverDocument });
     return temp;
   }
   //随机获取一条

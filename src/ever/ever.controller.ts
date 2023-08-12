@@ -25,7 +25,7 @@ export class EverController {
   async findAll() {
     return this.everService.findAll();
   }
-  
+
   @Get(':sid')
   @ApiOperation({
     summary: '使用id获取单个everiary',
@@ -54,7 +54,7 @@ export class EverController {
   @ApiOperation({
     summary: '使用_id更改单个everiary',
   })
-  updateEver(@Body() body: any, @Param() param: any) {
+  updateEver(@Param() param: any, @Body() body: CreateEverDto) {
     return this.everService.updateEver(param.sid, body);
   }
 }
