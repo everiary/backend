@@ -3,7 +3,6 @@ import {
   Controller,
   Delete,
   Get,
-  Put,
   Param,
   Post,
   Patch,
@@ -43,15 +42,6 @@ export class EverController {
     return this.everService.create(body);
   }
 
-  /*@Get('find')
-  @ApiOperation({
-    summary: '使用title获取单个everiary',
-  })
-  async findOne(@Query() query: any) {
-    console.log(query)
-    return this.everService.findOne(query.title);
-  }*/
-
   @Delete(':sid')
   @ApiOperation({
     summary: '使用_id删除单个everiary',
@@ -67,8 +57,12 @@ export class EverController {
   updateEver(@Body() body: any, @Param() param: any) {
     return this.everService.updateEver(param.sid, body);
   }
+}
 
-  @Put('')
+@Controller('public')
+export class EverPublicController {
+  constructor(private readonly everService: EverService) {}
+  @Get('random')
   @ApiOperation({
     summary: '获取一条随机的everiary',
   })

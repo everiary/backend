@@ -22,7 +22,7 @@ export class EverService {
   }
   async findOneById(sid: string): Promise<Ever[]> {
     // 这里是异步的
-    const temp = await this.userTest.find({ _id: sid });
+    const temp = await this.userTest.find({ _id: sid }).exec();
     return temp;
   }
   // 删除

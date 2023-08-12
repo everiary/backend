@@ -4,12 +4,13 @@ import { Document } from 'mongoose';
 export type EverDocument = Ever & Document;
 
 @Schema({
-  timestamps: true,
-  //id: true
+  timestamps: {
+    currentTime() {
+      return new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000)
+    },
+  },
 })
 export class Ever extends Document {
-  /*@Prop()
-  _id: string;*/
   @Prop({ required: true })
   title: string;
   @Prop({ required: true })
