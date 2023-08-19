@@ -1,8 +1,10 @@
+/* eslint-disable prettier/prettier */
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Ever, EverDocument } from './ever.schema';
 import { CreateEverDto } from 'src/dto/ever.dto';
 import { Injectable } from '@nestjs/common';
+import { NotFoundException } from '@nestjs/common';
 
 @Injectable()
 export class EverService {
@@ -10,8 +12,13 @@ export class EverService {
   constructor(@InjectModel('Ever') private userTest: Model<EverDocument>) {}
   // 添加
   async create(createEverDto: CreateEverDto): Promise<Ever> {
-    let currentTime = new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000)
-    const createEverDocument = Object.assign(createEverDto, {"created": currentTime,"updated": currentTime})
+    // eslint-disable-next-line prefer-const
+    const newDate = new Date();
+    const currentTime = newDate.valueOf();
+    const createEverDocument = Object.assign(createEverDto, {
+      created: currentTime,
+      updated: currentTime,
+    });
     const createEver = new this.userTest(createEverDocument);
     const temp = await createEver.save();
     return temp;
@@ -25,6 +32,9 @@ export class EverService {
   async findOneById(sid: string): Promise<Ever[]> {
     // 这里是异步的
     const temp = await this.userTest.find({ _id: sid }).exec();
+    if (!temp[0]) {
+      throw new NotFoundException('找不到文章');
+    }
     return temp;
   }
   // 删除
@@ -35,14 +45,21 @@ export class EverService {
   }
   // 修改
   async updateEver(sid: string, data: any) {
-    const updateEverDocument = Object.assign(data, {"updated": new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000)})
-    const temp = await this.userTest.updateOne({ _id: sid }, { $set: updateEverDocument });
+    const newDate = new Date();
+    const currentTime = newDate.valueOf();
+    const updateEverDocument = Object.assign(data, { updated: currentTime });
+    const temp = await this.userTest.updateOne(
+      { _id: sid },
+      { $set: updateEverDocument },
+    );
     return temp;
   }
   //随机获取一条
   async getRandom(): Promise<Ever[]> {
     // 这里是异步的  remove 方法删除成功并返回相应的个数
-    const temp = await this.userTest.aggregate([ { $sample: { size: 1 } } ]).exec();
+    const temp = await this.userTest
+      .aggregate([{ $sample: { size: 1 } }])
+      .exec();
     return temp;
   }
 }
