@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@nestjs/common':
     specifier: ^10.0.0
@@ -19,6 +23,9 @@ dependencies:
   class-validator:
     specifier: ^0.14.0
     version: 0.14.0
+  dayjs:
+    specifier: ^1.11.9
+    version: 1.11.9
   mongoose:
     specifier: ^7.4.1
     version: 7.4.1
@@ -2174,6 +2181,10 @@ packages:
       which: 2.0.2
     dev: true
 
+  /dayjs@1.11.9:
+    resolution: {integrity: sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==}
+    dev: false
+
   /debug@2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
     peerDependencies:
@@ -3755,6 +3766,7 @@ packages:
 
   /memory-pager@1.5.0:
     resolution: {integrity: sha512-ZS4Bp4r/Zoeq6+NLJpP+0Zzm0pR8whtGPf1XExKLJBAczGMnSi3It14OiNCStjQjM6NU1okjQGSxgEZN8eBYKg==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -4576,6 +4588,7 @@ packages:
 
   /sparse-bitfield@3.0.3:
     resolution: {integrity: sha1-/0rm5oZWBWuks+eSqzM004JzyhE=}
+    requiresBuild: true
     dependencies:
       memory-pager: 1.5.0
     dev: false
