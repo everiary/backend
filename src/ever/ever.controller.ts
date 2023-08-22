@@ -6,18 +6,19 @@ import {
   Param,
   Post,
   Patch,
-  Query,
 } from '@nestjs/common';
 // 引入用户服务
 import { EverService } from './ever.service';
 // 引入创建用户 DTO 用于限制从接口处传来的参数
-import { CreateEverDto } from 'src/dto/ever.dto';
+import { CreateEverDto } from '../dto/ever.dto';
 import { ApiOperation } from '@nestjs/swagger';
+import { Public } from 'src/common/public.decorator';
 // 配置局部路由
 @Controller('ever')
 export class EverController {
   constructor(private readonly everService: EverService) {}
 
+  @Public()
   @Get('')
   @ApiOperation({
     summary: '获取所有everiary，返回一个Array',
@@ -26,6 +27,7 @@ export class EverController {
     return this.everService.findAll();
   }
 
+  @Public()
   @Get(':sid')
   @ApiOperation({
     summary: '使用id获取单个everiary',
@@ -62,6 +64,7 @@ export class EverController {
 @Controller('public')
 export class EverPublicController {
   constructor(private readonly everService: EverService) {}
+  @Public()
   @Get('random')
   @ApiOperation({
     summary: '获取一条随机的everiary',

@@ -2,7 +2,7 @@
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Ever, EverDocument } from './ever.schema';
-import { CreateEverDto } from 'src/dto/ever.dto';
+import { CreateEverDto } from '../dto/ever.dto';
 import { Injectable } from '@nestjs/common';
 import { NotFoundException } from '@nestjs/common';
 
