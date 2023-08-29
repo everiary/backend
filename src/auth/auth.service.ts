@@ -26,6 +26,7 @@ export class AuthService {
     const temp = await createUser.save();
     return temp;
   }
+
   // 登录
   async login(loginData: CreateAuthDto) {
     const findUser = await this.userTest

@@ -24,7 +24,8 @@
     "release": "standard-version",
     "release:minor": "standard-version --release-as minor",
     "release:major": "standard-version --release-as major",
-    "release:patch": "standard-version --release-as patch"
+    "release:patch": "standard-version --release-as patch",
+    "ncc": "ncc build src/main.ts && node dist/index"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
