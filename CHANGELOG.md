@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/everiary/backend/compare/v0.1.0...v0.1.1) (2023-08-29)
+
+
+### 🚀 Chore | 构建/工程依赖/工具
+
+* 新增注册登录相关依赖及部分对应的[@types](https://github.com/types)文件 ([0de30fd](https://github.com/everiary/backend/commit/0de30fd1c6d948d849a5dac9f88d5d3e229471b7))
+
+
+### ✨ Features | 新功能
+
+* 新增了@Public装饰器，基本实现注册登录功能。 ([aaa71cd](https://github.com/everiary/backend/commit/aaa71cde96c7e20a56c0102861b579ae7d98ba8f))
+* 新增注册登录接口。 ([d926226](https://github.com/everiary/backend/commit/d926226a4c296e68120b85c2f8b74c80e80865da))
+
 ## [0.1.0](https://github.com/everiary/backend/compare/v0.0.5...v0.1.0) (2023-08-22)
 
 ### [0.0.5](https://github.com/everiary/backend/compare/v0.0.4...v0.0.5) (2023-08-22)
